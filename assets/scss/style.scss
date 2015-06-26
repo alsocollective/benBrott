@@ -1,0 +1,27 @@
+@import "settings";
+
+body,html{
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	font-family: 'Gotham A','Gotham B';
+	font-weight: 400;
+	
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	-ms-font-smoothing: antialiased;
+	-o-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+	overflow-x: hidden;
+}
+
+// @import "global";
+// @import "nav";
+// @import "footer";
+
+
+// @import "index";
+
+// div#shopify-theme-controls{
+// 	display: none;
+// }

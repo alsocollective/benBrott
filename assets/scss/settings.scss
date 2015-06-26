@@ -1,0 +1,89 @@
+
+// DEFIND SIZES
+$thumbSize: 400px;
+$small: 480px;
+$medium: 670px;
+$inbetween: 900px;
+$large: 1120px;
+$min: min-width;
+$max: max-width;
+
+// DEFINE COLOURS
+$lightgrey: #ccc;
+$grey: #818181;
+$darkgrey: #333;
+$white: #fff;
+$offwhite: #efefef;
+$black: #363636;
+$lightgrey: #ccc;
+$blue: rgb(42,127,192);
+$lightblue: rgb(133,200,255);
+
+// Other random things...
+$width: 50%;
+$indsideWidth: 1000px;
+$min-width:500px;
+$pb: 6em;
+$fs: 0.95em;
+$border: 1px solid $lightgrey;
+
+@mixin at-query ($constraint, $viewport1, $viewport2:null) {
+	@if $constraint == $min {
+		@media screen and ($min: $viewport1) {
+			@content;
+		}
+	} @else if $constraint == $max {
+		@media screen and ($max: $viewport1) {
+			@content;
+		}
+	} @else {
+		@media screen and ($min: $viewport1) and ($max: $viewport2) {
+			@content;
+		}
+	}
+}
+
+@mixin vendorize($name, $argument) {
+	-webkit-#{$name}: #{$argument};
+	-ms-#{$name}: #{$argument};
+	-moz-#{$name}: #{$argument};
+	-o-#{$name}: #{$argument};
+	#{$name}: #{$argument};
+}
+
+@mixin transition($transition-property, $transition-time, $method) {
+	-webkit-transition: $transition-property $transition-time $method;
+	-moz-transition: $transition-property $transition-time $method;
+	-ms-transition: $transition-property $transition-time $method;
+	-o-transition: $transition-property $transition-time $method;
+	transition: $transition-property $transition-time $method;
+}
+
+
+@mixin keyframes($animation-name) {
+	@-webkit-keyframes $animation-name {
+		@content;
+	}
+	@-moz-keyframes $animation-name {
+		@content;
+	}
+	@keyframes $animation-name {
+		@content;
+	}
+}
+
+@mixin animation($str) {
+	-webkit-animation: #{$str};
+}
+
+.center{
+	width: $width;
+	max-width: $indsideWidth;
+	margin: 0 auto;	
+	@include at-query ($max, $inbetween) {
+		width: 80%;
+	}
+	@include at-query ($max, $medium) {
+		width: 90%;
+	}
+}

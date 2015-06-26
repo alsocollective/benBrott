@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+include "header.html"
+</head>
+<body>
+
+include "nav.html"
+
+<div id="wrapper">
+	<section id="about">
+		include "sections/about.html"
+	</section>
+	<section id="research">
+		include "sections/research.html"
+	</section>
+	<section id="education">
+		include "sections/education.html"
+	</section>
+	<section id="clinical">
+		include "sections/clinical.html"
+	</section>
+	<section id="help">
+		include "sections/help.html"
+	</section>
+
+<script type="text/javascript" src="/assets/js/main.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	app.init();
+})
+</script>
+
+</body>
+</html>
