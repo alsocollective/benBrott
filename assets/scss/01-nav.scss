@@ -1,0 +1,28 @@
+#nav{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 99;
+
+	ul{
+		@extend .center;
+	}
+
+	li{
+		display: inline-block;
+		width: 20%;
+		text-align: right;
+		padding-top: 2em;
+		&:first-child{
+			width: 40%;
+			text-align: left;
+		}
+	}
+
+	a{
+		color: $white;
+		text-decoration: none;
+	}
+	
+}

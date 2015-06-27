@@ -1,0 +1,87 @@
+#about{
+	position: relative;
+	&::before{
+		content: " ";
+		width: 120%;
+		left: -10%;
+		background-color: $backgroundcolour;
+		position: absolute;
+		height: 150px;
+		display: block;
+		z-index: 1;
+		@include vendorize(transform-origin,0);
+		@include vendorize(transform,rotate(-4deg));
+	}
+
+	.contain{
+		position: relative;
+		z-index: 2;
+	}
+
+	.left,.right{
+		width: 50%;
+		vertical-align: top;
+		display: inline-block;
+		padding: 5em 0;
+	}
+
+	.right{
+		height: 100%;
+		top: 0;
+		right: 0;
+		padding: 0;
+		position: absolute;
+	}
+	.table{
+		height: 100%;
+		display: table;
+		width: 80%;
+		margin: 0 auto;
+	}
+	blockquote{
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+		font-size: $bigfont;
+	}
+	
+
+	p:last-child{
+		padding-top: 1.5em;
+		color: $blue;
+		a{
+			color: $blue;
+			text-decoration: none;
+			&:hover{
+				color: $black;
+			}
+		}
+		&::before{
+			display: block;
+			width: 5em;
+			border-top: 1px solid $blue;
+			content: " ";
+			padding-bottom: 1.5em;
+		}
+	}
+	
+
+
+
+	li{
+		display: inline-block;
+		width: 16.66%;
+		vertical-align: top;
+	}
+	.img{
+		display: block;
+		img{
+			display: block;
+			margin: 0 auto;
+		}
+	}
+	.text{
+		display: block;
+		text-align: center;
+	}
+}

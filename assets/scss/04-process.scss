@@ -1,0 +1,78 @@
+#process{
+	padding-top: 8em;
+	.subsection{
+		background-image: url("http://placehold.it/50x50");
+		background-size: cover;
+		background-position: center;
+		background-attachment: fixed;
+		overflow: hidden;
+
+
+		.shadded{
+			width: 55%;
+			position: relative;
+			text-align: right;
+			.fit::before{
+				content: " ";
+				width: 350%;
+				height: 350%;
+				background-color: rgba(0,0,0,0.3);
+				position: absolute;
+				display: block;
+				z-index: 1;
+				top: 0%;
+				right: -50%;
+				@include vendorize(transform-origin,100% 0);
+				@include vendorize(transform,rotate(21deg));		
+			}
+		}
+
+		&:nth-child(2n){
+			.shadded{
+				left: 45%;
+				text-align: left;
+				.contain{
+					text-align: right;
+				}
+				.fit::before{
+					left: -50%;
+					right: none;
+					@include vendorize(transform-origin,0 0);
+					@include vendorize(transform,rotate(-21deg));	
+				}
+			}
+		}
+	}
+
+
+
+	.contain{
+		position: relative;
+		display: inline-block;
+		z-index: 3;
+		// width: $width/2;
+		max-width: $indsideWidth/2;
+		text-align: left;
+	}
+	.fit{
+		padding: 6em 0;
+		position: relative;
+		width: 70%;
+		// min-width: 400px;
+		display: inline-block;
+	}
+
+	h3{
+		color: $white;
+		font-size: $bigfont;
+		line-height: $bigfontline;
+		padding-bottom: 1.1em;
+	}
+	p{
+		color: $white;
+	}
+	h2,h3,p{
+		position: relative;
+		z-index: 4;
+	}
+}
