@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd: 'assets/scss/',
 					src: ['style.scss'],
-					dest: 'public_html/assets/',
+					dest: 'assets/css',
 					ext: '.css'
 				}]
 			}
@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 		cssmin: {
 			combine: {
 				files: {
-					'assets/style.min.css': [
+					'public_html/assets/style.min.css': [
 						"assets/css/normalize.min.css",
 						"assets/css/slick.css",
 						"assets/css/style.css",
@@ -30,8 +30,9 @@ module.exports = function(grunt) {
 				// 	compress: false
 				// },
 				files: [{
-					'/public_html/assets/main.min.js': [
+					'public_html/assets/main.min.js': [
 						'assets/js/lib/jquery.min.js',
+						'assets/js/lib/skrollr.min.js',
 						// 'assets/js/lib/jquery.waypoints.js',
 						// 'assets/js/lib/slick.min.js',
 						// 'assets/js/lib/skrollr.min.js',
@@ -40,7 +41,7 @@ module.exports = function(grunt) {
 						'assets/js/*.js'
 					]
 				}, {
-					'/public_html/assets/modernizr.min.js': 'assets/js/lib/modernizr.js'
+					'public_html/assets/modernizr.min.js': 'assets/js/lib/modernizr.js'
 				}]
 
 			}
@@ -62,7 +63,7 @@ module.exports = function(grunt) {
 				tasks: ['sass', 'cssmin'] //
 			},
 			html: {
-				files: ["dev/**/*.html"],
+				files: ["html/**/*.html", "html/*.html"],
 				tasks: ["includes"]
 			},
 			js: {

@@ -8,27 +8,21 @@ include "header.html"
 include "nav.html"
 
 <div id="wrapper">
-	<section id="about">
+	<section id="index">
+		include "sections/index.html"
+	</section><section id="about">
 		include "sections/about.html"
+	</section><section id="process">
+		include "sections/process.html"
+	</section><section id="contact">
+		include "sections/contact.html"
 	</section>
-	<section id="research">
-		include "sections/research.html"
-	</section>
-	<section id="education">
-		include "sections/education.html"
-	</section>
-	<section id="clinical">
-		include "sections/clinical.html"
-	</section>
-	<section id="help">
-		include "sections/help.html"
-	</section>
-
-<script type="text/javascript" src="/assets/js/main.min.js"></script>
+</div>
+<script type="text/javascript" src="/assets/main.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
-	app.init();
-})
+	$(document).ready(function() {
+		app.init();
+	})
 </script>
 
 </body>

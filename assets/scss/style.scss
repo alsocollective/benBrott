@@ -1,22 +1,12 @@
 @import "settings";
 
-body,html{
-	padding: 0;
-	margin: 0;
-	width: 100%;
-	font-family: 'Gotham A','Gotham B';
-	font-weight: 400;
-	
-	-webkit-font-smoothing: antialiased;
-	-moz-font-smoothing: antialiased;
-	-ms-font-smoothing: antialiased;
-	-o-font-smoothing: antialiased;
-	font-smoothing: antialiased;
-	overflow-x: hidden;
-}
+@import "00-global";
+@import "01-nav";
+@import "02-index";
+@import "03-about";
+@import "04-process";
+@import "05-contact";
 
-// @import "global";
-// @import "nav";
 // @import "footer";
 
 

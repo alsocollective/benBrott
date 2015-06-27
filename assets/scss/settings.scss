@@ -9,23 +9,21 @@ $min: min-width;
 $max: max-width;
 
 // DEFINE COLOURS
-$lightgrey: #ccc;
-$grey: #818181;
-$darkgrey: #333;
-$white: #fff;
-$offwhite: #efefef;
-$black: #363636;
-$lightgrey: #ccc;
-$blue: rgb(42,127,192);
-$lightblue: rgb(133,200,255);
+$organge:rgb(227,94,48);
+$white:#fff;
+$yellow:rgb(251,230,57);
+$blue:rgb(44,157,199);
+$black:#333;
+$backgroundcolour:#ddd;
 
 // Other random things...
-$width: 50%;
-$indsideWidth: 1000px;
+$width: 90%;
+$indsideWidth: 1200px;
 $min-width:500px;
-$pb: 6em;
-$fs: 0.95em;
-$border: 1px solid $lightgrey;
+
+$bigfont:2.3em;
+$bigfontline:1.2em;
+
 
 @mixin at-query ($constraint, $viewport1, $viewport2:null) {
 	@if $constraint == $min {
@@ -81,7 +79,7 @@ $border: 1px solid $lightgrey;
 	max-width: $indsideWidth;
 	margin: 0 auto;	
 	@include at-query ($max, $inbetween) {
-		width: 80%;
+		width: 90%;
 	}
 	@include at-query ($max, $medium) {
 		width: 90%;
