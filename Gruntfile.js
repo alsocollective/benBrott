@@ -46,6 +46,31 @@ module.exports = function(grunt) {
 
 			}
 		},
+		// needs also 
+		// $ brew install ImageMagick
+		responsive_images: {
+			dev: {
+				options: { // Target options
+					optimizationLevel: 6
+				},
+				files: [{
+					expand: true,
+					src: ['*.{gif,jpg,jpeg,png}'],
+					cwd: 'assets/img/',
+					dest: 'assets/imageSized'
+				}]
+			}
+		},
+		imagemin: {
+			dev: {
+				files: [{
+					expand: true, // Enable dynamic expansion
+					cwd: 'assets/imageSized', // Src matches are relative to this path
+					src: ['*.{png,jpg,jpeg,gif}'], // Actual patterns to match
+					dest: 'public_html/assets/img/' // Destination path prefix
+				}]
+			}
+		},
 		includes: {
 			// reference 
 			// https://github.com/vanetix/grunt-includes 
@@ -69,6 +94,10 @@ module.exports = function(grunt) {
 			js: {
 				files: 'assets/**/*.js',
 				tasks: ['uglify']
+			},
+			images: {
+				files: ['assets/img/*.{gif,jpg,jpeg,png}'],
+				tasks: ['responsive_images', 'imagemin']
 			}
 		}
 	});
@@ -77,5 +106,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-includes');
+	grunt.loadNpmTasks('grunt-responsive-images');
+	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.registerTask('default', ['watch']);
 };

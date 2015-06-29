@@ -7,16 +7,19 @@
 		background-attachment: fixed;
 		overflow: hidden;
 
+		// @include vendorize(transform,translateY(50px));
+
 
 		.shadded{
 			width: 55%;
 			position: relative;
 			text-align: right;
+			@include transition(opacity,0.35s,ease-in-out);
 			.fit::before{
 				content: " ";
 				width: 350%;
 				height: 350%;
-				background-color: rgba(0,0,0,0.3);
+				background-color: rgba(0,0,0,0.5);
 				position: absolute;
 				display: block;
 				z-index: 1;

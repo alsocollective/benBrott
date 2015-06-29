@@ -72,6 +72,14 @@
 		li{
 			padding: 0 2em;
 			display: inline-block;
+			a{
+				display: inline-block;
+				line-height: 0;
+				width: 55px;
+			}
+			svg{
+				max-width: 100%;
+			}
 		}
 	}
 
