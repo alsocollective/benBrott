@@ -71,6 +71,11 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
+		jpgmin: {
+			src: ['assets/imageSized/*.{png,jpg,jpeg,gif}'],
+			dest: 'public_html/assets/img/',
+			quality: 50
+		},
 		includes: {
 			// reference 
 			// https://github.com/vanetix/grunt-includes 
@@ -97,7 +102,7 @@ module.exports = function(grunt) {
 			},
 			images: {
 				files: ['assets/img/*.{gif,jpg,jpeg,png}'],
-				tasks: ['responsive_images', 'imagemin']
+				tasks: ['responsive_images', 'jpgmin']
 			}
 		}
 	});
@@ -108,5 +113,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-includes');
 	grunt.loadNpmTasks('grunt-responsive-images');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
+	grunt.loadNpmTasks('grunt-imagine');
 	grunt.registerTask('default', ['watch']);
 };

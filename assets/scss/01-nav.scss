@@ -1,28 +1,213 @@
+@include keyframes(fadeIn) {
+	0% { 
+		opacity: 0; 
+	}
+	100% { 
+		opacity: 1;
+	}
+}
+
 #nav{
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
+	position: relative;
 	z-index: 99;
-
-	ul{
-		@extend .center;
-	}
-
-	li{
-		display: inline-block;
-		width: 20%;
-		text-align: right;
-		padding-top: 2em;
-		&:first-child{
-			width: 40%;
-			text-align: left;
-		}
-	}
 
 	a{
 		color: $white;
 		text-decoration: none;
+		text-transform: capitalize;
+		&:hover{
+			color: $blue;
+		}
 	}
-	
+	h1{
+		font-weight: bolder;
+		color: $yellow;
+	}	
+
+	&.intro{
+		#navcontainer{
+			position: absolute;
+			width: 100%;
+		}
+		ul{
+			@extend .center;
+		}
+		li{
+			display: inline-block;
+			width: 20%;
+			text-align: right;
+
+			@include at-query ($max, $medium) {
+				float: right;
+				width: 51%;
+			}
+			&:first-child{
+				width: 40%;
+				text-align: left;
+				@include at-query ($max, $medium) {
+					float: left;
+				}
+			}			
+		}
+		a{
+			display: inline-block;
+			padding: 2em 0 1em 0;
+			width: 100%;
+			@include at-query ($max, $medium) {
+				padding: 0;
+			}
+		}
+		#hamberger{
+			display: none;
+		}
+	}
+	&.show,&.hide{
+		#navcontainer{
+			display: none;
+		}
+		#hamberger{
+			@include animation('fadeIn 0.5s');
+			display: block;
+			position: fixed;
+			top: 0;
+			right: 0;
+			z-index: 101;
+			a{
+				font-size: 3em;
+				display: block;
+				padding: 1.5em 1.5em 0.5em 1.5em;
+				background-color: rgba(51,51,51,0.9);
+
+				&:focus{
+					noFocusLine: expression(this.onFocus=this.blur());
+					outline:0;
+				}
+
+				@include vendorize(transform,rotate(45deg));
+				@include vendorize(transform-origin,100% 100%);
+
+				span{
+					display: block;
+					@include transition(transform,0.35s,ease-in-out);
+					@include vendorize(transform,rotate(-45deg));
+				}
+				@include at-query ($max, $medium) {
+					font-size: 1.5em;
+					padding-top: 1em;
+				}
+
+			}
+		}
+	}
+	&.show{
+		#hamberger a{
+			background-color: transparent;
+			span{
+				display: block;
+				@include vendorize(transform,rotate(0deg));
+			}
+		}
+		#navcontainer{
+			@include animation('fadeIn 0.5s');
+			display: table;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(51,51,51,0.9);
+			ul{
+				display: table-cell;
+				vertical-align: middle;
+				padding-top: 2em;
+				width: 100%;
+				text-align: center;	
+				font-size: 3em;
+				@include at-query ($max, $inbetween) {
+					font-size: 2em;
+				}
+				@include at-query ($max, $medium) {
+					font-size: 1.5em;
+				}
+				li{
+					text-align: center;
+					a{
+						line-height: 1em;
+						display: inline-block;
+						padding: 0.5em 1em;
+					}
+				}
+				h1{
+					text-align: center;
+					line-height: 1em;
+				}
+			}			
+		}
+	}
 }
+// #navcontainer{
+// 	position: relative;
+// 	z-index: 99;
+// }
+// #nav{
+// 	position: fixed;
+// 	top: 0;
+// 	left: 0;
+// 	width: 100%;
+// 	z-index: 99;
+// 	background-color: #000;
+// 	background-color: rgba(0,0,0,0.2);
+// 	@include vendorize(box-shadow,0px 0px 30px 1px rgba(0,0,0,0.2));
+
+// 	@include at-query ($max, $medium) {
+// 		background-color: transparent;
+// 		@include vendorize(box-shadow,none);
+// 	}
+
+// 	ul{
+// 		@extend .center;
+// 	}
+
+// 	li{
+// 		display: inline-block;
+// 		width: 20%;
+// 		text-align: right;
+// 		@include at-query ($max, $medium) {
+// 			vertical-align: top;
+// 			float: right;
+// 			width: 50%;
+// 			display: block;
+// 			&:first-child{
+// 				float: left;
+// 			}
+// 		}
+// 		&:first-child{
+// 			width: 40%;
+// 			text-align: left;
+// 		}
+// 		a{
+// 			display: inline-block;
+// 			padding: 2em 0 1em 0;
+// 			width: 100%;
+// 			@include at-query ($max, $inbetween) {
+// 				padding: 0.5em 0 0.5em 0;
+// 			}
+// 			@include at-query ($max, $medium) {
+// 				padding: 0.05em 0 0.05em 0;
+// 			}
+// 		}
+// 	}
+
+// 	a{
+// 		color: $white;
+// 		text-decoration: none;
+// 		text-transform: capitalize;
+// 	}
+	
+// 	h1{
+// 		font-weight: bolder;
+// 		color: $yellow;
+// 	}
+// }	

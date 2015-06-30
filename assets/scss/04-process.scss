@@ -18,12 +18,12 @@
 			}
 			position: relative;
 			text-align: right;
-			@include transition(opacity,0.35s,ease-in-out);
+			// @include transition(opacity,0.35s,ease-in-out);
 			.fit::before{
 				content: " ";
 				width: 350%;
 				height: 350%;
-				background-color: rgba(0,0,0,0.5);
+				background-color: rgba(0,0,0,0.7);
 				@include at-query ($max, $large) {
 					background-color: transparent;
 				}
@@ -31,7 +31,7 @@
 				display: block;
 				z-index: 1;
 				top: 0%;
-				right: -50%;
+				right: -65%;
 				@include vendorize(transform-origin,100% 0);
 				@include vendorize(transform,rotate(21deg));		
 			}
@@ -50,10 +50,14 @@
 						padding-left: 5%;
 						padding-right: 0%;
 					}
+					@include at-query ($max, $inbetween) {
+						padding-left: 0%;
+					}
+
 					text-align: right;
 				}
 				.fit::before{
-					left: -50%;
+					left: -65%;
 					right: none;
 					@include vendorize(transform-origin,0 0);
 					@include vendorize(transform,rotate(-21deg));	
@@ -80,6 +84,7 @@
 			width: 90%;
 			margin: 0 auto;
 			display: block;
+			padding-right: 0%;
 		}
 	}
 	.fit{
@@ -98,6 +103,10 @@
 		font-size: $bigfont;
 		line-height: $bigfontline;
 		padding-bottom: 1.1em;
+		width: 120%;
+		@include at-query ($max, $large) {
+			width: 100%;
+		}
 	}
 	p{
 		color: $white;

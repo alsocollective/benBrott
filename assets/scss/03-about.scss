@@ -16,6 +16,7 @@
 	.contain{
 		position: relative;
 		z-index: 2;
+		margin-bottom: 6em;
 	}
 
 	.left,.right{
@@ -28,6 +29,14 @@
 			margin: 0 auto;
 			display: block;
 		}		
+	}
+
+	.left{
+		p{
+			@include at-query ($min, $large) {
+				width: 90%;
+			}
+		}
 	}
 
 	.right{
@@ -46,12 +55,25 @@
 		display: table;
 		width: 80%;
 		margin: 0 auto;
+		@include at-query ($max, $medium) {
+			display: block;
+		}
 	}
 	blockquote{
 		display: table-cell;
 		vertical-align: middle;
 		text-align: center;
 		font-size: $bigfont;
+		line-height: $bigfontline;
+		@include at-query ($max, $medium) {
+			display: block;
+			font-size: 1.5em;
+			line-height: $bigfontline;
+		}
+		>span{
+			max-width: 400px;
+			margin: 0 auto;
+		}
 	}
 	
 
@@ -76,11 +98,17 @@
 	
 
 
-
+	ul{
+		text-align: center;
+		max-width: $indsideWidth*0.8;
+		margin: 0 auto;
+	}
 	li{
 		display: inline-block;
 		width: 16.66%;
 		vertical-align: top;
+		min-width: 120px;
+		padding-bottom: 2em;
 	}
 	.img{
 		display: block;
@@ -88,9 +116,18 @@
 			display: block;
 			margin: 0 auto;
 		}
+		svg{
+			max-width: 50%;
+			margin: 0 auto;
+			display: block;
+			// stroke:$blue;
+			fill:$blue;
+		}
 	}
 	.text{
 		display: block;
 		text-align: center;
+		line-height: 1.2em;
+		padding-top: 0.3em;
 	}
 }

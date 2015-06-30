@@ -12,9 +12,14 @@ body,html{
 	font-smoothing: antialiased;
 	overflow-x: hidden;
 	background-color: $backgroundcolour;
-	line-height: 1.6em;
-
+	line-height: 1.7em;
+	font-size: 1.03em;
+	letter-spacing: 0.035em;
 }
+// .noscroll{
+// 	height: 100vh;
+// 	overflow: hidden;
+// }
 
 ul,li,p,h1,h2,h3,h4,h5,blockquote{
 	padding: 0;
@@ -28,11 +33,7 @@ ul,li,p,h1,h2,h3,h4,h5,blockquote{
 }
 
 p {
-	font-size: 1.03em;
 	text-align: left;
-	line-height: 1.7em;
-	//font-weight: 200;
-	letter-spacing: 0.035em;
 }
 #wrapper{
 	width: 100%;
@@ -75,18 +76,22 @@ blockquote{
 		width: 3em;
 		display: block;
 		position: absolute;
+
+		@include vendorize(transform,rotate(-45deg));
+		@include at-query ($max, $inbetween) {
+			@include vendorize(transform,rotate(-35deg));
+		}
+
 	}
 	&::before{
-		left: 95%;
-		top: 5%;
-		transform: rotate(-45deg);
-		transform-origin: 0 0;
+		left: 100%;
+		top: 0%;
+		@include vendorize(transform-origin,0 0);
 	}
 	&::after{
-		right: 95%;
-		bottom: 5%;
-		transform: rotate(-45deg);
-		transform-origin: 100% 100%;
+		right: 100%;
+		bottom: 0%;
+		@include vendorize(transform-origin,100% 100%);
 	}
 }
 

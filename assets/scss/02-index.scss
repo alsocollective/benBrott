@@ -21,6 +21,10 @@
 				text-align: center;
 				color: $white;
 				font-size: 5em;
+				line-height: 1em;
+				@include at-query ($max, $medium) {
+					font-size: 4em;
+				}
 			}
 		}
 		span{
