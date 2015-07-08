@@ -130,4 +130,10 @@
 		line-height: 1.2em;
 		padding-top: 0.3em;
 	}
+	#corevalues p{
+		color: inherit;
+		&::before{
+			content: none;
+		}
+	}
 }

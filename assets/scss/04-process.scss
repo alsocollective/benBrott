@@ -1,3 +1,4 @@
+
 #process{
 	padding-top: 8em;
 	.subsection{
@@ -114,6 +115,10 @@
 		position: relative;
 		z-index: 4;
 	}
+}
+
+.touch #process .subsection{
+	background-attachment: scroll;
 }
 
 #process_discovery{
