@@ -161,6 +161,25 @@ module.exports = function(grunt) {
 			}
 		},
 
+		// deploy: {
+		// 	css: {
+		// 		files: ['**/*.scss'],
+		// 		tasks: ['sass', 'cssmin'] //
+		// 	},
+		// 	html: {
+		// 		files: ["html/**/*.html", "html/*.html"],
+		// 		tasks: ["includes", "htmlmin"]
+		// 	},
+		// 	js: {
+		// 		files: 'assets/**/*.js',
+		// 		tasks: ['uglify']
+		// 	},
+		// 	images: {
+		// 		files: ['assets/img/*.{gif,jpg,jpeg,png}'],
+		// 		tasks: ['responsive_images', 'imagemin']
+		// 	}
+		// },
+
 		watch: {
 			css: {
 				files: ['**/*.scss'],
