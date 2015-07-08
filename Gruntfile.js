@@ -1,3 +1,5 @@
+var mozjpeg = require('imagemin-mozjpeg');
+
 module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -46,36 +48,89 @@ module.exports = function(grunt) {
 
 			}
 		},
-		// needs also 
-		// $ brew install ImageMagick
+
+
 		responsive_images: {
-			dev: {
-				options: { // Target options
-					optimizationLevel: 6
-				},
+			options: {
+				engine: 'gm',
+				newFilesOnly: true, //Remove for production level deployment
+				sizes: [{
+					name: 'small',
+					width: 320
+				}, {
+					name: 'medium',
+					width: 640
+				}, {
+					name: 'large',
+					width: 1024
+					// suffix: "_ret", //There could be better suffixes. Also, implement the responsive html now.
+				}, {
+					name: 'huge',
+					width: 1280
+				}],
+			},
+			target: {
 				files: [{
 					expand: true,
-					src: ['*.{gif,jpg,jpeg,png}'],
+					src: ['**.{jpg,gif,png}'],
 					cwd: 'assets/img/',
-					dest: 'assets/imageSized'
+					dest: 'public_html/assets/img/'
 				}]
 			}
 		},
-		imagemin: {
-			dev: {
+		imagemin: { // Task Maybe yo uneed to install imagemein mozjpeg
+			dynamic: { // Another target 
+				options: { // Target options 
+					optimizationLevel: 3,
+					svgoPlugins: [{
+						removeViewBox: false
+					}],
+					use: [mozjpeg()]
+				},
 				files: [{
-					expand: true, // Enable dynamic expansion
-					cwd: 'assets/imageSized', // Src matches are relative to this path
-					src: ['*.{png,jpg,jpeg,gif}'], // Actual patterns to match
-					dest: 'public_html/assets/img/' // Destination path prefix
+					expand: true, // Enable dynamic expansion 
+					cwd: 'public_html/assets/img/', // Src matches are relative to this path 
+					src: ['**/*.{png,jpg,gif}'], // Actual patterns to match 
+					dest: 'public_html/assets/img/' // Destination path prefix 
 				}]
 			}
 		},
-		jpgmin: {
-			src: ['assets/imageSized/*.{png,jpg,jpeg,gif}'],
-			dest: 'public_html/assets/img/',
-			quality: 50
-		},
+
+
+		// needs also 
+		// $ brew install ImageMagick
+		// responsive_images: {
+		// 	dev: {
+		// 		options: { // Target options
+		// 			optimizationLevel: 6
+		// 		},
+		// 		files: [{
+		// 			expand: true,
+		// 			src: ['*.{gif,jpg,jpeg,png}'],
+		// 			cwd: 'assets/img/',
+		// 			dest: 'assets/imageSized'
+		// 		}]
+		// 	}
+		// },
+		// imagemin: {
+		// 	dev: {
+		// 		files: [{
+		// 			expand: true, // Enable dynamic expansion
+		// 			cwd: 'assets/imageSized', // Src matches are relative to this path
+		// 			src: ['*.{png,jpg,jpeg,gif}'], // Actual patterns to match
+		// 			dest: 'public_html/assets/img/' // Destination path prefix
+		// 		}]
+		// 	}
+		// },
+		// jpgmin: {
+		// 	src: ['assets/imageSized/*.{png,jpg,jpeg,gif}'],
+		// 	dest: 'public_html/assets/img/',
+		// 	quality: 50
+		// },
+
+
+
+
 		includes: {
 			// reference 
 			// https://github.com/vanetix/grunt-includes 
@@ -87,6 +142,25 @@ module.exports = function(grunt) {
 				cwd: '.'
 			}
 		},
+		htmlmin: {
+			dist: {
+				options: {
+					removeComments: true,
+					collapseWhitespace: true,
+					useShortDoctype: true,
+					minifyJS: true,
+					minifyCSS: true,
+					removeCommentsFromCDATA: true
+				},
+				files: [{
+					expand: true,
+					src: ['public_html/**/*.html'],
+					destination: 'public_html/min/',
+					ext: '.html'
+				}]
+			}
+		},
+
 		watch: {
 			css: {
 				files: ['**/*.scss'],
@@ -94,7 +168,7 @@ module.exports = function(grunt) {
 			},
 			html: {
 				files: ["html/**/*.html", "html/*.html"],
-				tasks: ["includes"]
+				tasks: ["includes", "htmlmin"]
 			},
 			js: {
 				files: 'assets/**/*.js',
@@ -102,17 +176,20 @@ module.exports = function(grunt) {
 			},
 			images: {
 				files: ['assets/img/*.{gif,jpg,jpeg,png}'],
-				tasks: ['responsive_images', 'jpgmin']
+				tasks: ['responsive_images', 'imagemin']
 			}
 		}
 	});
+
+	grunt.loadNpmTasks('grunt-responsive-images');
+	grunt.loadNpmTasks('grunt-contrib-imagemin');
+
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-includes');
-	grunt.loadNpmTasks('grunt-responsive-images');
-	grunt.loadNpmTasks('grunt-contrib-imagemin');
-	grunt.loadNpmTasks('grunt-imagine');
+	grunt.loadNpmTasks('grunt-contrib-htmlmin');
+
 	grunt.registerTask('default', ['watch']);
 };

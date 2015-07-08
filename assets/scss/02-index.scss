@@ -9,10 +9,18 @@
 		height: 100%;
 		width: 100%;
 		margin-top: -100px;
-		background-image: url("Untitled-1.jpg");
+		background-image:url('/assets/img/01_home-huge.jpg');
+		@include at-query ($max, $large) {
+			background-image:url('/assets/img/01_home-large.jpg');
+		}
+		@include at-query ($max, $medium) {
+			background-image:url('/assets/img/01_home-medium.jpg');
+		}
+
 		background-size: cover;
 		background-position: center;
 		background-attachment: fixed;
+
 		> div{
 			display: table-cell;
 			vertical-align: middle;
