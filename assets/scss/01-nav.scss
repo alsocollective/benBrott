@@ -69,8 +69,8 @@
 			@include animation('fadeIn 0.5s');
 			display: block;
 			position: fixed;
-			top: 0;
-			right: 0;
+			top: -3px;
+			right: -3px;
 			z-index: 101;
 			a{
 				font-size: 3em;

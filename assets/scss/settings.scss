@@ -5,6 +5,9 @@ $small: 480px;
 $medium: 670px;
 $inbetween: 900px;
 $large: 1120px;
+$pxratio: 2;
+$retinaWebKit: -webkit-min-device-pixel-ratio;
+$retina: min-device-pixel-ratio;
 $min: min-width;
 $max: max-width;
 
@@ -35,10 +38,20 @@ $bigfontline:1.35em;
 		@media screen and ($max: $viewport1) {
 			@content;
 		}
+	} @else if $constraint == $retina {
+		@media only screen and ($retinaWebKit: $viewport1), only screen and ($retina: $viewport1) {
+			@content;
+		}
 	} @else {
 		@media screen and ($min: $viewport1) and ($max: $viewport2) {
 			@content;
 		}
+	}
+}
+
+@mixin retina () {
+	@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+		@content;
 	}
 }
 

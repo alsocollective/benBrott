@@ -56,17 +56,17 @@ module.exports = function(grunt) {
 				newFilesOnly: true, //Remove for production level deployment
 				sizes: [{
 					name: 'small',
-					width: 320
-				}, {
-					name: 'medium',
 					width: 640
 				}, {
-					name: 'large',
+					name: 'medium',
 					width: 1024
 					// suffix: "_ret", //There could be better suffixes. Also, implement the responsive html now.
 				}, {
-					name: 'huge',
+					name: 'large',
 					width: 1280
+				}, {
+					name: '@2x', //Retina
+					width: 2560
 				}],
 			},
 			target: {

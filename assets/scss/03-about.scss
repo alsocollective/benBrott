@@ -87,13 +87,13 @@
 				color: $black;
 			}
 		}
-		&::before{
-			display: block;
-			width: 5em;
-			border-top: 1px solid $blue;
-			content: " ";
-			padding-bottom: 1.5em;
-		}
+		// &::before{
+		// 	display: block;
+		// 	width: 5em;
+		// 	//border-top: 1px solid $blue;
+		// 	//content: " ";
+		// 	padding-bottom: 1.5em;
+		// }
 	}
 	
 

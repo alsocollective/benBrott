@@ -122,56 +122,74 @@
 }
 
 #process_discovery{
-	background-image:url('/assets/img/02_discovery-huge.jpg');
+	background-image:url('/assets/img/discovery-large.jpg');
 	@include at-query ($max, $large) {
-		background-image:url('/assets/img/02_discovery-large.jpg');
+		background-image:url('/assets/img/discovery-large.jpg');
 	}
 	@include at-query ($max, $medium) {
-		background-image:url('/assets/img/02_discovery-medium.jpg');
+		background-image:url('/assets/img/discovery-medium.jpg');
+	}
+	@include at-query ($retina, $pxratio) {
+		background-image:url('/assets/img/discovery-port-large.jpg');
 	}
 }
 #process_design{
-	background-image:url('/assets/img/03_design-huge.jpg');
+	background-image:url('/assets/img/design-large.jpg');
 	@include at-query ($max, $large) {
-		background-image:url('/assets/img/03_design-large.jpg');
+		background-image:url('/assets/img/design-large.jpg');
 	}
 	@include at-query ($max, $medium) {
-		background-image:url('/assets/img/03_design-medium.jpg');
+		background-image:url('/assets/img/design-medium.jpg');
+	}
+	@include at-query ($retina, $pxratio) {
+		background-image:url('/assets/img/design-port-large.jpg');
 	}
 }
 #process_reporting{
-	background-image:url('/assets/img/04_reporting-huge.jpg');
+	background-image:url('/assets/img/reporting-large.jpg');
 	@include at-query ($max, $large) {
-		background-image:url('/assets/img/04_reporting-large.jpg');
+		background-image:url('/assets/img/reporting-large.jpg');
 	}
 	@include at-query ($max, $medium) {
-		background-image:url('/assets/img/04_reporting-medium.jpg');
+		background-image:url('/assets/img/reporting-medium.jpg');
+	}
+	@include at-query ($retina, $pxratio) {
+		background-image:url('/assets/img/reporting-port-large.jpg');
 	}
 }
 #process_feasibility{
-	background-image:url('/assets/img/05_feasibility-huge.jpg');
+	background-image:url('/assets/img/feasibility-large.jpg');
 	@include at-query ($max, $large) {
-		background-image:url('/assets/img/05_feasibility-large.jpg');
+		background-image:url('/assets/img/feasibility-large.jpg');
 	}
 	@include at-query ($max, $medium) {
-		background-image:url('/assets/img/05_feasibility-medium.jpg');
+		background-image:url('/assets/img/feasibility-medium.jpg');
+	}
+	@include at-query ($retina, $pxratio) {
+		background-image:url('/assets/img/feasibility-port-large.jpg');
 	}
 }
 #process_constructing{
-	background-image:url('/assets/img/06_constructing-huge.jpg');
+	background-image:url('/assets/img/constructing-large.jpg');
 	@include at-query ($max, $large) {
-		background-image:url('/assets/img/06_constructing-large.jpg');
+		background-image:url('/assets/img/constructing-large.jpg');
 	}
 	@include at-query ($max, $medium) {
-		background-image:url('/assets/img/06_constructing-medium.jpg');
+		background-image:url('/assets/img/constructing-medium.jpg');
+	}
+	@include at-query ($retina, $pxratio) {
+		background-image:url('/assets/img/constructing-port-large.jpg');
 	}
 }
 #process_finishing{
-	background-image:url('/assets/img/07_finishing-huge.jpg');
+	background-image:url('/assets/img/finishing-large.jpg');
 	@include at-query ($max, $large) {
-		background-image:url('/assets/img/07_finishing-large.jpg');
+		background-image:url('/assets/img/finishing-large.jpg');
 	}
 	@include at-query ($max, $medium) {
-		background-image:url('/assets/img/07_finishing-medium.jpg');
+		background-image:url('/assets/img/finishing-medium.jpg');
+	}
+	@include at-query ($retina, $pxratio) {
+		background-image:url('/assets/img/finishing-port-large.jpg');
 	}
 }
