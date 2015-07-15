@@ -15,6 +15,9 @@
 		color: $white;
 		text-decoration: none;
 		text-transform: capitalize;
+		@include vendorize(text-shadow, 0px 0px 7px $black);
+		
+
 		&:hover{
 			color: $blue;
 		}
@@ -22,6 +25,7 @@
 	h1{
 		font-weight: bolder;
 		color: $yellow;
+		@include vendorize(text-shadow, 0px 0px 7px $black);
 	}	
 
 	&.intro{
